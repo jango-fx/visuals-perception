@@ -1,4 +1,4 @@
 # Visuals: Perception
 
 
-https://jango-fx.github.io/visuals-perception/visual-humanvision.html
+[Human Vision](https://jango-fx.github.io/visuals-perception/visual-humanvision.html)
