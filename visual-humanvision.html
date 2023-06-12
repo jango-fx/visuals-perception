@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Visual Perception of the Human Eye</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body style="height:100%; background-color: none;">
+	
+	<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'
+         width='1920px' height='1080px' viewPort='0 0 1920 1080'>
+         <!-- <rect fill="black" width="1920" height="1080"></rect> -->
+         <!-- <image href="https://picsum.photos/id/2/1920/1080/" width="1920" height="1080" mask="url(#circlemask)" ></image> -->
+         <image href="https://picsum.photos/1920/1080/" width="1920" height="1080" mask="url(#circlemask)" ></image>
+         <mask id="circlemask">
+            <rect fill="black" width="1920" height="1080"></rect>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+            <circle class="maskcircle" fill="white" cx="0" cy="0" r="80" fill-opacity="1.0" ></circle>
+         </mask>
+    </svg>
+    <script>
+        
+        let x =1920/2;
+        let y = 1080/2;
+        
+        updateCircles();
+        
+        function updateCircles()
+        {
+            console.log("!!!!!!!!!!!!!!!!!!!!!!!")
+            let allCircles = document.querySelectorAll(".maskcircle");
+            let id = Math.round(Math.random()*(allCircles.length-1));
+            let currentCircle = allCircles[id];
+            
+            
+            x += (Math.random()-0.5)*600;
+            y += (Math.random()-0.5)*600;
+
+            if(x < 40) x = 40;
+            if(x > 1920-40) x = 1920-40;
+
+            if(y < 40) y = 40;
+            if(y > 1080-40) y = 1080-40;
+
+            currentCircle.setAttribute('cx', x );
+            currentCircle.setAttribute('cy', y );
+            currentCircle.setAttribute('r', (Math.random()*40+80) );
+            currentCircle.setAttribute("fill-opacity",1.0);
+
+            fadeOut(currentCircle);
+            setTimeout(updateCircles, 50);
+        }
+        
+        function fadeOut(circle)
+        {
+            let op = circle.getAttribute("fill-opacity")*0.9;
+            circle.setAttribute("fill-opacity",op);
+            if(op > 0.1) setTimeout(fadeOut, 200, circle);
+        }
+    </script>
+  </body>
+</html>
